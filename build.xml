@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SistemaHospitalar" default="default" basedir=".">
+    <description>Builds, tests, and runs the project SistemaHospitalar.</description>
+    <import file="nbproject/build-impl.xml"/>
+
+    <!-- Target para limpar o projeto -->
+    <target name="clean-project" depends="clean">
+        <echo message="Projeto limpo"/>
+    </target>
+
+    <!-- Target para compilar o projeto -->
+    <target name="compile-project" depends="compile">
+        <echo message="Projeto compilado"/>
+    </target>
+
+    <!-- Target para criar o JAR com o manifesto correto -->
+    <target name="create-jar" depends="compile-project">
+        <mkdir dir="${dist.dir}"/>
+        <jar destfile="${dist.dir}/SistemaHospitalar.jar" basedir="${build.classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="com.example.MainClass"/>
+            </manifest>
+        </jar>
+        <echo message="JAR criado com sucesso: ${dist.dir}/SistemaHospitalar.jar"/>
+    </target>
+
+    <!-- Opcional: Target para executar o JAR -->
+    <target name="run" depends="create-jar">
+        <java jar="${dist.dir}/SistemaHospitalar.jar" fork="true"/>
+    </target>
+</project>
